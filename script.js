@@ -1,5 +1,12 @@
 function loadimages(){
-
+    enemy_image = new Image;
+    enemy_image.src = "Assets/v1.png";
+    
+    player_img = new Image;
+    player_img.src = "Assets/superhero.png";
+    
+    gem_image = new Image;
+    gem_image.src = "Assets/gemm.png";
 }
 
 function init(){
