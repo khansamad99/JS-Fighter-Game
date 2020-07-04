@@ -50,11 +50,39 @@ function init(){
 	};
     
     enemy = [e1,e2,e3];
+
+    player = {
+		x : 20,
+		y : H/2,
+		w : 60,
+		h : 60,
+		speed : 5,
+        moving  : false,
+        health : 100,
+	};
+	gem = {
+		x : W-100,
+		y : H/2,
+		w : 60,
+		h : 60,
+    };
+    
+    canvas.addEventListener('onkeydown',function(){
+        player.moving = true;
+    });
+
+    canvas.addEventListener('mouseup',function(){
+        console.log('mouseup');
+        player.moving = false;
+    });
 }
 
 function draw(){
 
     pen.clearRect(0,0,W,H);
+
+    pen.drawImage(player_img,player.x,player.y,player.w,player.h);
+    pen.drawImage(gem_image,gem.x,gem.y,gem.w,gem.h);
     
     for(var i=0;i<enemy.length;i++){
         pen.drawImage(enemy_image,enemy[i].x,enemy[i].y,enemy[i].w,enemy[i].h);
@@ -63,6 +91,9 @@ function draw(){
 }
 function update(){
 
+    if(player.moving = true){
+        player.x += player.speed;
+    }
     for(let i=0;i<enemy.length;i++){
         enemy[i].y += enemy[i].speed;
         if(enemy[i].y>H-enemy[i].h || enemy[i].y <0){
